@@ -37,14 +37,14 @@ public class WidgetProvider extends AppWidgetProvider {
                     for (int appWidgetId : appWidgetIds) {
                         updateWidget(context, manager, appWidgetId);
                     }
-                    /*
-                    // 알람 매니저 사용하기 : 5초간격 가능
+
+                    // 알람 매니저 사용하기
                     long next = System.currentTimeMillis() + INTERVAL;
                     AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                     Intent target = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
                     PendingIntent pIntent = PendingIntent.getBroadcast(context, 0, target, 0);
                     alarmManager.set(AlarmManager.RTC, next, pIntent);
-                    */
+
                 }
             }
         }
@@ -68,19 +68,19 @@ public class WidgetProvider extends AppWidgetProvider {
 //        for(int i=0; i<count; i++){
 //            updateWidget(context, appWidgetManager, appWidgetIds[i]);
 //        }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(runFlag){
-                    if(!stopFlag) {
-                        for (int widgetId : appWidgetIds) {
-                            updateWidget(context, appWidgetManager, widgetId);
-                        }
-                    }
-                    try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while(runFlag){
+//                    if(!stopFlag) {
+//                        for (int widgetId : appWidgetIds) {
+//                            updateWidget(context, appWidgetManager, widgetId);
+//                        }
+//                    }
+//                    try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
+//                }
+//            }
+//        }).start();
     }
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId){
